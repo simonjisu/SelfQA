@@ -1,0 +1,26 @@
+# Contents
+
+- Functions
+- Builtin Functions
+  - print
+  - ord
+  - if
+  - in
+  - while
+  - for
+  - continue
+  - break
+  - with
+  - open
+- Modules & Classes
+- Local / Global Variables
+- NameSpace
+- Types of objects
+  - String 
+  - Boolean
+  - Integer
+  - Float
+  - Set
+  - List
+  - Dict
+  - Class
