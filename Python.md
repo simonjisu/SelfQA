@@ -1,5 +1,6 @@
 # Contents
 
+- Basic
 - Functions
 - Builtin Functions
   - print
@@ -21,6 +22,7 @@
   - Integer
   - Float
   - Set
+  - Tuple
   - List
   - Dict
   - Class
