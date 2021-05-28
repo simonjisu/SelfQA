@@ -5,7 +5,7 @@
 
 # Computing
 
-- Data Structure
+- [Data Structure](DataStructure.md)
 - Computer System
 - Algorithms: Searching and Sorting
 - Python
