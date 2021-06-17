@@ -7,6 +7,8 @@
 - [Stacks](#stacks)
 - [Queues](#queues)
 - [Hash Tables](#hash-tables)
+- [Graphs](#graphs)
+- [Binary Trees](#binary-trees)
 
 ---
 
@@ -117,3 +119,34 @@
   - 주의점: 최악의 경우 모든 key가 한 linked list에 저장됨, 이를 피해야함
   - 좋은 hash function 예시: multiplication - `floor(m * (k*A mod 1))` , division: `k mod m`(단 m=2의 멱집합은 피하는게 좋음, 소수가 좋음)
 - Python: [Hash Table Code](codes/datastructure/hashtable.py#L56)
+
+# Graphs
+
+- Directed graphs `G = (V, E)`
+    - G = Graph
+    - V = Vertices(Vertex) or Nodes, 유한함
+    - E = Edges
+- Undirected Graphs `G = (V, E)`
+    - unordered pairs of vertices
+    - self-loops는 금지
+
+# Binary Trees
+
+- Tree: 두 노드(Node)간 단 하나의 엣지(edge)로 연결된 노드들의 집합, acyclic, undirected graph
+    - 특성: `|E| = |V| - 1`
+- Root Tree: root 노드(parent가 없음)를 가진 tree
+    - siblings: 같은 parent를 가진 노드
+    - leaf(external) node: children이 없는 노드
+    - non-leaf(internal) node: 리프가 아닌 노드
+    - degree: 하위 트리 갯수 = 각 노드가 지닌 children의 갯수
+    - depth: 루트에서 특정 노드까지 edge 개수
+    - level: 트리의 특정 깊이(depth)를 가지는 노드의 집합
+    - height: 루트 노드에서 가장 깊숙히 있는 리프 노드의 깊이
+- 이진 트리(Binary Tree)
+    - 최대 2개(좌, 우)의 노드를 가지는 트리
+    - 노드가 없는 경우 = empty tree / null tree
+    - 좌/우 한쪽만 노드가 있는 경우에도 둘은 다른 트리
+    - full binary trees: 모든 노드가 0개 혹은 2개의 children을 가지고 있는 경우
+        - 총 노드의 개수 = `2^h - 1`
+    - complete binary trees: 마지막 level 을 제외한 나머지 level 에 node 들이 가득 차있고(degree=2), 마지막 level 에서 node 는 가장 왼쪽 부터 채워지는 형태
+        - height `h`에서 internal 노드의 개수는 `2^h - 1`

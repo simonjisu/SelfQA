@@ -7,7 +7,7 @@
 
 - [Data Structure](DataStructure.md)
 - Computer System
-- Algorithms: Searching and Sorting
+- [Algorithms: Searching and Sorting](Algorithms.md)
 - Python
 
 # MachineLearning
