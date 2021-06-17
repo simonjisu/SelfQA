@@ -3,6 +3,7 @@
 - [Insertion](#insertion)
 - [Bubble](#bubble)
 - [Merge Sort](#merge-sort)
+- [Quick Sort](#quick-sort)
 
 # Selection
 
@@ -142,6 +143,75 @@
     ```
 
 # Quick Sort
+
 - 분할정복(devide & conquer) 알고리즘
     - Devide: 피벗(pivot)원소를 골라서, 입력을 피벗원소보다 작은 쪽은 왼쪽, 피벗보다 큰쪽은 오른쪽으로 나눈다. 따라서 무조건 반으로 나뉘는 합병 정렬과 달리 좌우 입력의 길이가 달라질 수 도 있다.
     - Conquer: 재귀적으로 두 파트를 다시 분할하고 정렬 한다.
+- inplace 알고리즘
+- 복잡도: O(N log_2^N)
+- python
+    ```python
+    def quick_sort(l):
+    """
+    Quick Sort
+    Args: 
+        l: input list
+    Return:
+        sorted list by ascending
+    """
+    def partition(l, low, high):
+        """
+        Partitioin the list into small and large part by pivot
+        Args:
+            l: input list
+            low: lowest index of the partitioned list
+            high: highest index of the partitioned list
+        Return:
+            pivot index in the list
+        """
+        def swap(p, q):
+            """swap p-th element and q-th element"""
+            t = l[p]
+            l[p] = l[q]
+            l[q] = t
+        pivot = l[low]
+        m = low
+        for j in range(low+1, high+1):
+            if l[j] < pivot:
+                m += 1
+                swap(j, m)
+        swap(low, m)
+        return m
+    
+    def sort(l, low, high):
+        """
+        stop sorting when the `low` index is higher then `high` index 
+        """
+        if low < high:
+            pivot_idx = partition(l, low, high)
+            sort(l, low, pivot_idx-1)
+            sort(l, pivot_idx+1, high)
+        return None
+    
+    sort(l, 0, len(l)-1)
+    return l
+    ```
+
+# Sorting 비교
+
+|Sort| Worst T(N)| Best T(N)| Stability | Inplace|
+|--|--|--|--|--|--|
+|Bubble| O(N^2)| O(N^2)| Yes | Yes |
+|Insertion| O(N^2)| O(N^2)| Yes | Yes |
+|Selection| O(N^2)| O(N^2)| No | Yes |
+|Merge| O(N log N)| O(N log N)| Yes | No |
+|Quick| O(N^2)| O(N log N)| No | Yes |
+
+- Stability: 정렬 후에도 기존 입력 시퀀스의 특성과 순서를 유지하는지
+
+# Traversal
+
+
+## Depth-First
+
+## Breadth-First

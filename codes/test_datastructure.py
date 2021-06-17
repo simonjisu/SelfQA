@@ -1,4 +1,4 @@
-from datastructure import SingleLinkedList, DoublyLinkedList, CircularLinkedList, Stack, Queue, HashTable
+from datastructure import SingleLinkedList, DoublyLinkedList, CircularLinkedList, Stack, Queue, HashTable, BST, TreeNode
 from datastructure.stackandqueue import OFError, UFError
 
 def test_list_class(cls):
@@ -85,11 +85,81 @@ def test_hash_table():
     except KeyError as e:
         print(e)
 
+def test_bst():
+    # check insert, search, delete
+    def get_tree(insert_12=False):
+        r"""
+                4
+              /   \
+             2    10
+           /  \  /  \
+          1   3 8   12
+                /
+                6
+                \
+                7
+        """
+        bst = BST(root=TreeNode(4))
+        bst.root.left = TreeNode(2)
+        bst.root.left.left = TreeNode(1)
+        bst.root.left.right = TreeNode(3)
+        bst.root.right = TreeNode(10)
+        bst.root.right.left = TreeNode(8)
+        bst.root.right.left.left = TreeNode(6)
+        bst.root.right.left.left.right = TreeNode(7)
+        if insert_12:
+            bst.root.right.right = TreeNode(12)
+        return bst
+
+    bst = get_tree(insert_12=False)
+    # search
+    search8 = bst.search(8)
+    assert search8.val == 8
+    # insert
+    bst.insert(12)
+    search12 = bst.search(12)
+    assert search12 == bst.root.right.right
+    # max
+    maxNode = bst.get_max()
+    assert maxNode.val == 12
+    # min
+    minNode = bst.get_min()
+    assert minNode.val == 1
+    # delete leaf node
+    bst.delete(3)
+    search3 = bst.search(3)
+    assert search3 == bst.root.left.right
+    # delete node with child
+    bst = get_tree(insert_12=True)
+    bst.delete(6)
+    search7 = bst.search(7)
+    assert search7 == bst.root.right.left.left
+    # delete node with both child
+    bst = get_tree(insert_12=True)
+    bst.delete(10)
+    search7 = bst.search(7)
+    assert search7 == bst.root.right.left.right
+    search12 = bst.search(12)
+    assert search12 == bst.root.right.right
+    # delete root node
+    bst = get_tree(insert_12=True)
+    bst.delete(4)
+    search3 = bst.search(3)
+    assert search3 == bst.root
+    search1 = bst.search(1)
+    assert search1 == bst.root.left.left
+    search7 = bst.search(7)
+    assert search7 == bst.root.right.left.left.right
+    print("all bst test passed")
+
 def main():
+    # TODO: Change all test to unittest code
     test_list()
     test_stack()
     test_quque()
     test_hash_table()
+    test_bst()
 
 if __name__ == "__main__":
+    
     main()

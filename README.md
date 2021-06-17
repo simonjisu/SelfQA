@@ -2,7 +2,6 @@
 
 자신에게 묻고 답하기
 
-
 # Computing
 
 - [Data Structure](DataStructure.md)
