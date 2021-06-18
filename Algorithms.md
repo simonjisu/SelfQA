@@ -211,7 +211,6 @@
 
 # Traversal
 
-
 ## Depth-First
 
 ## Breadth-First
