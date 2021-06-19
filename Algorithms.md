@@ -1,11 +1,21 @@
 
-- [Selection](#selection)
-- [Insertion](#insertion)
-- [Bubble](#bubble)
-- [Merge Sort](#merge-sort)
-- [Quick Sort](#quick-sort)
+- [Sorting](#sorting)
+  - [Selection](#selection)
+  - [Insertion](#insertion)
+  - [Bubble](#bubble)
+  - [Merge Sort](#merge-sort)
+  - [Quick Sort](#quick-sort)
+  - [Sorting 비교](#sorting-비교)
+- [Search](#search)
+  - [Linear Search](#linear-search)
+  - [Binary Search](#binary-search)
+- [Tree Traversal](#tree-traversal)
+  - [Depth-First](#depth-first)
+  - [Breadth-First](#breadth-first)
 
-# Selection
+# Sorting
+
+## Selection
 
 - 선택 정렬(Selection Sort)은 원소들중 가장 작은 원소를 찾아 첫번째 자리부터 채워넣는 것이다. 마지막 한자리가 남을 때까지 알고리즘은 계속된다.
 - 복잡도: O(N^2)
@@ -35,7 +45,7 @@
         return l
     ```
 
-# Insertion
+## Insertion
 
 - 삽입 정렬(Insertion Sort)은 정렬된 부분과 정렬되지 않는 부분을 따로 두어 정렬되지 않은 부분의 첫 원소부터 차례대로 정렬된 부분으로 넣는 알고리즘
 - 복잡도: O(N^2)
@@ -62,7 +72,7 @@
         return l
     ```
 
-# Bubble
+## Bubble
 
 - 버블 정렬(Bubble Sort)은 각 스텝에서 서로 인접한(adjacent) 두 원소를 크기를 비교하여 바르지 않은 순서일 경우 두 원소를 교환(swap)하는 알고리즘
 - 복잡도: O(N^2)
@@ -90,12 +100,12 @@
         return l
   ```
 
-# Merge Sort
+## Merge Sort
 
 - 합병 정렬(Merge Sort)의 아이디어는 분할정복(devide & conquer)
     - Devide 들어온 입력을 반으로 쪼갠 다음에 반으로 나눠진 입력에 대해서 재귀적으로 합병 정렬을 실행 한다.
     - Conquer 두 개의 정렬된 데이터가 입력으로 들어온다. 그러면 새로운 공간에 두 입력을 하나로 합치(merge)면서 정렬한다.
-- 복잡도: O(N log_2^N)
+- 복잡도: O(N log_2 N)
 - python
     ```python
     def merge_sort(l):
@@ -142,13 +152,13 @@
     
     ```
 
-# Quick Sort
+## Quick Sort
 
 - 분할정복(devide & conquer) 알고리즘
     - Devide: 피벗(pivot)원소를 골라서, 입력을 피벗원소보다 작은 쪽은 왼쪽, 피벗보다 큰쪽은 오른쪽으로 나눈다. 따라서 무조건 반으로 나뉘는 합병 정렬과 달리 좌우 입력의 길이가 달라질 수 도 있다.
     - Conquer: 재귀적으로 두 파트를 다시 분할하고 정렬 한다.
 - inplace 알고리즘
-- 복잡도: O(N log_2^N)
+- 복잡도: O(N log_2 N)
 - python
     ```python
     def quick_sort(l):
@@ -197,7 +207,7 @@
     return l
     ```
 
-# Sorting 비교
+## Sorting 비교
 
 |Sort| Worst T(N)| Best T(N)| Stability | Inplace|
 |--|--|--|--|--|--|
@@ -209,7 +219,67 @@
 
 - Stability: 정렬 후에도 기존 입력 시퀀스의 특성과 순서를 유지하는지
 
-# Traversal
+# Search
+
+## Linear Search
+
+- 순서대로 원소를 찾는것
+- python
+    ```python
+    def linear_search(l, e):
+        idx = -1
+        for i in range(len(l)):
+            if l[i] == e:
+                idx = i 
+                break
+        return idx
+    ```
+- 복잡도:
+    - sorted: O(N)
+    - not sorted: O(N)
+
+## Binary Search
+
+- 분할정복(devide & conquer) 알고리즘
+- 찾는 원소가 현재 인덱스의 원소보다 작으면 왼쪽, 크면 오른쪽 찾기
+- python
+    ```python
+    def binary_search(l, e):
+        left_p = 0
+        right_p = len(l)-1
+        while left_p < right_p:
+            i = int((left_p + right_p) / 2)
+            if e == l[i]:
+                return i
+            elif e < l[i]:
+                right_p = i-1
+            else: # e > l[i]
+                left_p = i+1
+        return -1
+
+    def binary_search(l, e):
+        """recursive"""
+        def _search(l, left_p, right_p, e):
+            if left > right:
+                return -1
+            i = int((left_p + right_p) / 2)
+            if e == l[i]:
+                return i
+            elif e < l[i]:
+                right_p = i-1
+                i = _search(l, left_p, right_p, e)
+            else: # e > l[i]
+                left_p = i+1
+                i = _search(l, left_p, right_p, e)
+            return i
+        return _search(l, 0, len(l)-1, e)
+    ```
+
+- 복잡도:
+    - sorted: O(log_2 N)
+    - not sorted: sort after search O(N log_2 N) + O(log_2 N) = O(N log_2 N) 
+
+# Tree Traversal
 
 ## Depth-First
 
