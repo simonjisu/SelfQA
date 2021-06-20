@@ -32,8 +32,7 @@
 
 # Statistics
 
-- Random Variables
-- Probabilities
+- [Probabilities](./stats/probability.md)
 
 # Data Analysis
 
