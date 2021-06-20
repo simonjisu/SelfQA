@@ -283,4 +283,10 @@
 
 ## Depth-First
 
+- Python: 
+    - [DFT Code](codes/algorithms/bst.py#L34)
+
 ## Breadth-First
+
+- Python: 
+    - [BFT Code](codes/algorithms/bst.py#L21)

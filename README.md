@@ -4,9 +4,9 @@
 
 # Computing
 
-- [Data Structure](DataStructure.md)
+- [Data Structure](./computing/datastructure.md)
 - Computer System
-- [Algorithms: Searching and Sorting](Algorithms.md)
+- [Algorithms: Searching and Sorting](./computing/algorithms.md)
 - Python
 
 # MachineLearning
@@ -16,7 +16,7 @@
 - Logistic Regression
 - Decision Tree
 - Ensembles: Bagging & Boosting
-- Preprocessing
+- [Evaluation Metrics](./ml/evaluation.md)
 
 # DeepLearning
 
