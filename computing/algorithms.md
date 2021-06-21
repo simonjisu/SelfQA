@@ -210,7 +210,7 @@
 ## Sorting 비교
 
 |Sort| Worst T(N)| Best T(N)| Stability | Inplace|
-|--|--|--|--|--|--|
+|--|--|--|--|--|
 |Bubble| O(N^2)| O(N^2)| Yes | Yes |
 |Insertion| O(N^2)| O(N^2)| Yes | Yes |
 |Selection| O(N^2)| O(N^2)| No | Yes |
