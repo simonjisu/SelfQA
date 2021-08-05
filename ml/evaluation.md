@@ -38,7 +38,7 @@ print(confusion_matrix)
 |Positive| True Positive | False Negative |
 |Negative| False Positive | True Negative |
 
-- Row = Predict / Column = Target
+- Row = Target / Column = Predict
 - 해석: 해야할 것(Positive/Negative)을 맞게/틀리게(True/False) 했다.
 
 ## Accuracy
