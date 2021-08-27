@@ -48,7 +48,7 @@ print(confusion_matrix)
 
 ## Precision
 
-Positive 라고 예측한 것 중에서 정말로 맞게 예측한 비율 = TP / (TP + FN)
+Positive 라고 예측한 것 중에서 정말로 맞게 예측한 비율 = TP / (TP + FP)
 - Class 0 Precision = 4 / (4 + 6 + 3) 
 - Class 1 Precision = 2 / (1 + 2 + 0)
 - Class 2 Precision = 6 / (1 + 2 + 6)
@@ -65,7 +65,7 @@ Positive 라고 예측한 것 중에서 정말로 맞게 예측한 비율 = TP /
 
 ## Recall / Sensitivity
 
-실제 Positive 인것 중에 맞게 예측한 비율 = TP / (TP + FP)
+실제 Positive 인것 중에 맞게 예측한 비율 = TP / (TP + FN)
 - Class 0 Recall = 4 / (4 + 1 + 1) 
 - Class 1 Recall = 2 / (6 + 2 + 2)
 - Class 2 Recall = 6 / (3 + 0 + 6)
