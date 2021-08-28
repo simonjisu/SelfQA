@@ -99,9 +99,9 @@ Positive 라고 예측한 것 중에서 정말로 맞게 예측한 비율 = TP /
 ## Fall-out
 
 False Positive Rate, Negative라고 예측했는데 실제로 Positive라고 맞춘 비율 = FP / (TN + FP)
-- Class 0 Fall-out = (1 + 1) / ((2 + 0 + 2 + 6) + (1 + 1))
-- Class 1 Fall-out = (6 + 2) / ((4 + 3 + 1 + 6) + (6 + 2))
-- Class 2 Fall-out = (3 + 0) / ((4 + 6 + 1 + 2) + (3 + 0))
+- Class 0 Fall-out = (6 + 3) / (6 + 2 + 2 + 3 + 0 + 6)
+- Class 1 Fall-out = (1 + 0) / (4 + 1 + 1 + 3 + 0 + 6)
+- Class 2 Fall-out = (1 + 2) / (4 + 1 + 1 + 6 + 2 + 2)
 - Specificity = 1 - Fall-out Rate = FN / (TN + FP): Negative 라고 예측한 것 중에 실제로 Negative라고 잘 맞춘 비율
 - Python
 
