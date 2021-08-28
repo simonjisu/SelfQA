@@ -56,7 +56,8 @@ Positive 라고 예측한 것 중에서 정말로 맞게 예측한 비율 = TP /
 - Python
 
     ```python
-    precisions = confusion_matrix[[0, 1, 2], [0, 1, 2]] / confusion_matrix.sum(1)
+    predicted = confusion_matrix.sum(0)
+    precisions = true_positive / predicted
     print(precisions.round(4))
     print(f"Macro Precision {(precisions / len(precisions)).sum():.4f}")
     # [0.3077 0.6667 0.6667]
@@ -73,11 +74,12 @@ Positive 라고 예측한 것 중에서 정말로 맞게 예측한 비율 = TP /
 - Python
 
     ```python
-    recalls = confusion_matrix[[0, 1, 2], [0, 1, 2]] / confusion_matrix.sum(0)
+    actual_count = confusion_matrix.sum(1)
+    recalls = true_positive / actual_count
     print(recalls.round(4))
     print(f"Macro Recall {(recalls / len(recalls)).sum():.4f}")
     # [0.6667 0.2    0.6667]
-    # Macro Precision 0.5111
+    # Macro Recall 0.5111
     ```
 
 ## F1
@@ -101,7 +103,24 @@ False Positive Rate, Negative라고 예측했는데 실제로 Positive라고 맞
 - Class 1 Fall-out = (6 + 2) / ((4 + 3 + 1 + 6) + (6 + 2))
 - Class 2 Fall-out = (3 + 0) / ((4 + 6 + 1 + 2) + (3 + 0))
 - Specificity = 1 - Fall-out Rate = FN / (TN + FP): Negative 라고 예측한 것 중에 실제로 Negative라고 잘 맞춘 비율
+- Python
 
+    ```python
+    from itertools import combinations
+
+    fallouts = []
+    for cls_idx, neg_idx in enumerate(reversed(list(combinations(range(3), 2)))):
+        false_positive = confusion_matrix[neg_idx, cls_idx]
+        negative = confusion_matrix[neg_idx, :]
+        fpr = false_positive.sum() / negative.sum()
+        fallouts.append(fpr)
+
+    fallouts = np.array(fallouts)
+    print(fallouts.round(4))
+    print(f"Macro Fallout {(fallouts / len(fallouts)).sum():.4f}")
+    # [0.4737 0.0667 0.1875]
+    # Macro Fallout 0.2426
+    ```
 
 ## ROC Curve
 
