@@ -130,7 +130,7 @@ def gameDevelopment(N: int, M:int, status: Tuple[int], gamemap: List[List[int]])
         if turn_count == 4:
             print(f" - Cur Direction: {direc}")
             direc_opp = direc_opps[direc]
-            r_next, c_next = direc_steps[direc]
+            r_next, c_next = direc_steps[direc_opp]
             if gamemap[r+r_next][c+c_next] == 0:
                 # go back 
                 r += r_next
