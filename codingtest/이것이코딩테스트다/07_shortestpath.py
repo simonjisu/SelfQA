@@ -6,11 +6,41 @@ __doc__ = """
 - 벨만 포드 알고리즘
 """
 
-from typing import List
+from typing import List, Dict, Tuple
 
-def dijkstraMethod1(graph, start):
-    INF = int(1e9) # float("inf")
+def dijkstraMethod1(N: int, M: int, graph: Dict[int, List[Tuple[int, int]]], start: int):
+    """
+    Dijkstra Algorithm Method 1
+
+    Args:
+        N (int): Node numbers
+        M (int): Edge numbers
+        graph (Dict[int, List[Tuple[int, int]]]): Graph
+        start (int): start node (index from 1)
+    """
     
+    INF = int(1e9) # float("inf")
+    visited = [False] * N
+    distance = [INF] * N
+
+
+    def getSmallestNode():
+        min_value = INF
+        index = 0
+        for i in range(N):
+            if distance[i] < min_value and not visited[i]:
+                min_value = distance[i]
+                index = i
+        return index + 1        
+
+    # start
+    visited[start-1] = True
+    distance[start-1] = 0
+    for node, dis in graph[start]:
+        distance[node-1] = dis
+        
+    
+
     return 
 
 
